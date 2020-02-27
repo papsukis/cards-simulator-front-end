@@ -1,0 +1,21 @@
+<mat-card>
+<mat-card-title>{{card.name}}</mat-card-title>  
+<mat-card-content>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item">archetype : {{card.archetype}}</li>
+                <mat-divider></mat-divider>
+                <li class="list-group-item">{{card.race}}</li>
+                <mat-divider></mat-divider>
+                <li class="list-group-item">Type : {{card.type}}</li>
+                <mat-divider></mat-divider>
+                <li class="list-group-item">Text : {{card.desc}}</li>
+        </ul>
+    
+</mat-card-content>
+<mat-card-footer>
+        <button (click)="addToMainDeck(card)">ADD to mainDeck</button>
+        <button (click)="addToExtraDeck(card)">ADD to ExtraDeck</button>
+        <button (click)="addToSideDeck(card)">ADD to SideDeck</button>
+</mat-card-footer>
+</mat-card>
+

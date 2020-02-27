@@ -1,0 +1,18 @@
+<h1>Cards</h1>
+<div class="row">
+    <div class="col 3">
+            <div *ngFor="let card of cards | paginate: { itemsPerPage: 10, currentPage: p }">
+                    <card [card]="card" >
+                    </card>    
+                </div>
+    </div>
+</div>
+<!--<mat-paginator [length]="cards.length"
+              [pageSize]="10"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="p = read($event)"
+              [pageIndex] ="p">
+</!--<mat-paginator>-->
+
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

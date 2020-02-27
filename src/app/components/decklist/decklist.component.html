@@ -1,0 +1,16 @@
+
+Main Deck
+<div *ngFor="let card of mainDeck.cards">
+    {{card.name}}
+    <img src="{{card.card_images.image_url_small}}"/>
+</div>
+Side Deck
+<div *ngFor="let card of sideDeck.cards">
+    {{card.name}}
+    <img src="{{card.card_images.image_url_small}}"/>
+</div>
+Extra Deck
+<div *ngFor="let card of extraDeck.cards">
+    {{card.name}}
+    <img src="{{card.card_images.image_url}}"/>
+</div>

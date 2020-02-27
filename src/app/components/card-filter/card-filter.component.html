@@ -1,0 +1,84 @@
+<div class="container">
+  <form #heroForm="ngForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput type="text" id="name" [(ngModel)]="card.name" name="name" placeholder="Name">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input matInput type="text" id="archetype" name="archetype" [(ngModel)]="card.archetype" placeholder="Archetype">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <select matNativeControl id="Type" name="Type" [(ngModel)]="card.race"
+        placeholder="Type">
+        <option *ngFor="let at of monsterRace" [value]="at">{{at}}</option>
+      </select>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <select matNativeControl id="atribute" name="atribute" [(ngModel)]="card.atribute"
+        placeholder="Atribute">
+        <option *ngFor="let at of atribute" [value]="at">{{at}}</option>
+      </select>
+    </mat-form-field>
+    <br />
+
+    <div class="row">
+      <div *ngFor="let t of type" class="col 1 ">
+        <mat-radio-button [(ngModel)]="t.checked" name="t.checked" (click)="cardType(t.name)" [value] = "t.name" ngDefaultControl>{{t.name}}
+        </mat-radio-button>
+      </div>
+    </div>
+    <div *ngIf="monster">
+      <div class="row">
+        <div *ngFor="let t of monsterType" class="col 1 ">
+          <mat-checkbox [(ngModel)]="t.checked" name="t.checked" ngDefaultControl>{{t.name}} </mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="spell">
+      <div class="row">
+        <div *ngFor="let t of spellTypes" class="col 1 ">
+          <mat-radio-button [(ngModel)]="t.checked" name="t.checked" ngDefaultControl>{{t}} </mat-radio-button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="trap">
+      <div class="row">
+        <div *ngFor="let t of trapTypes" class="col 1 ">
+          <mat-radio-button [(ngModel)]="t.checked" name="t.checked" ngDefaultControl>{{t}} </mat-radio-button>
+        </div>
+      </div>
+    </div>
+    <label>Level</label>
+    <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1000" [(ngModel)]="card.level" name="level" min="0"
+      max="12"></mat-slider>
+<br/>
+<mat-form-field>
+  <input matInput type="number"  id="minAtk" [(ngModel)]="card.minAtk" name="minAtk"
+    placeholder="minAtk">
+</mat-form-field>
+<span>ATK</span>
+<mat-form-field>
+  <input matInput type="number" id="maxAtk" [(ngModel)]="card.maxAtk" name="maxAtk" placeholder="maxAtk">
+</mat-form-field>
+<br />
+<mat-form-field>
+  <input matInput type="number" id="minDef" [(ngModel)]="card.minDef" name="minDef"
+    placeholder="minDef">
+</mat-form-field>
+<span>DEF</span>
+<mat-form-field>
+  <input matInput type="number" id="maxDef" [(ngModel)]="card.maxDef" name="maxDef" placeholder="maxDef">
+</mat-form-field>
+<br />
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+
+  </form>
+  <div *ngIf="submitted">
+    <cards [cards]="cards"></cards>
+  </div>
+
+</div>
