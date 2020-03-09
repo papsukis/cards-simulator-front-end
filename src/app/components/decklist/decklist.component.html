@@ -1,16 +1,37 @@
+<div class="p-grid p-dir-col">
+    <div 
+    id="main_deck" 
+    class="p-col" 
+    cdkDropList 
+    [cdkDropListData]="mainDeck.cards" 
+    [cdkDropListConnectedTo]="trackIds"
+    (cdkDropListDropped)="onTalkDrop($event)">
+    Main Deck
+        <div class="p-grid p-dir-row">
+            <ng-container *ngFor="let card of mainDeck.cards">
+                <card [card]="card" class="p-col">
+                </card>
+            </ng-container>
+        </div>
+    </div>
 
-Main Deck
-<div *ngFor="let card of mainDeck.cards">
-    {{card.name}}
-    <img src="{{card.card_images.image_url_small}}"/>
-</div>
-Side Deck
-<div *ngFor="let card of sideDeck.cards">
-    {{card.name}}
-    <img src="{{card.card_images.image_url_small}}"/>
-</div>
-Extra Deck
-<div *ngFor="let card of extraDeck.cards">
-    {{card.name}}
-    <img src="{{card.card_images.image_url}}"/>
+    <div id="side_deck" class="p-col" cdkDropList [cdkDropListData]="sideDeck.cards" [cdkDropListConnectedTo]="trackIds"
+        (cdkDropListDropped)="onTalkDrop($event)">
+        Side Deck
+        <ng-container *ngFor="let card of sideDeck.cards">
+            <card [card]="card">
+            </card>
+        </ng-container>
+    </div>
+    
+    <div id="extra_deck" class="p-col" cdkDropList [cdkDropListData]="extraDeck.cards"
+        [cdkDropListConnectedTo]="trackIds" (cdkDropListDropped)="onTalkDrop($event)">
+        Extra Deck
+        <ng-container *ngFor="let card of extraDeck.cards">
+            <card [card]="card">
+            </card>
+        </ng-container>
+    </div>
+
+
 </div>

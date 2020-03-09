@@ -6,10 +6,9 @@ export class MainDeckEntity{
     @JsonProperty("main_deck_id",Number)
     id : number;
     @JsonProperty("cards",[CardEntity])
-    cards : CardEntity[];
+    cards : CardEntity[] =[];
 
     constructor(){
-        this.cards = []
     }
 
 }

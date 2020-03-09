@@ -24,6 +24,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { DecklistComponent } from './components/decklist/decklist.component';
 import { ContainerComponent } from './components/container/container.component';
 import { DataService } from './services/data.service';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 
@@ -52,7 +53,8 @@ import { DataService } from './services/data.service';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    DragDropModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

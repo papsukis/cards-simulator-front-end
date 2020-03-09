@@ -1,28 +1,25 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, interval, fromEvent } from 'rxjs';
 import { CardEntity } from '../entities/card';
+import { Store } from '../entities/store';
 
 @Injectable()
 export class DataService {
+
+  store=new Store();
+  storeSubj :BehaviorSubject<Store>=new BehaviorSubject(new Store())
+
+
+  constructor() { 
+
+    this.init();
+  }
   
-
-  private mainDeck = new BehaviorSubject(new CardEntity);
-  private sideDeck = new BehaviorSubject(new CardEntity);
-  private extraDeck = new BehaviorSubject(new CardEntity);
-  mainDeckMessage = this.mainDeck.asObservable();
-  sideDeckMessage = this.sideDeck.asObservable();
-  extraDeckMessage = this.extraDeck.asObservable();
-
-  constructor() { }
-
-  addToMainDeck(card: CardEntity){
-    this.mainDeck.next(card);
+  init() {
+    this.store = new Store();
   }
-  addToExtraDeck(card: CardEntity){
-    this.extraDeck.next(card);
-  }
-  addToSideDeck(card: CardEntity){
-    this.sideDeck.next(card);
+  setState(obj) {
+    this.store = Object.assign({}, this.store, obj);
   }
 
 }

@@ -94,7 +94,6 @@ export class CardFilterComponent implements OnInit {
       this.trap = false;
       this.spell = true;
     }
-    console.log(type)
   }
 
 }

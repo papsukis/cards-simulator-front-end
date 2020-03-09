@@ -10,20 +10,10 @@ import { DataService } from 'src/app/services/data.service';
 export class CardComponent implements OnInit {
 
   @Input() card : CardEntity;
-  //@Output test: EventEmitter();
 
   constructor(private dataService : DataService ) { }
 
   ngOnInit() {
-  }
-  addToMainDeck(card : CardEntity){
-    this.dataService.addToMainDeck(card);
-  }
-  addToExtraDeck(card : CardEntity){
-    this.dataService.addToExtraDeck(card);
-  }
-  addToSideDeck(card : CardEntity){
-    this.dataService.addToSideDeck(card);
   }
 
 }

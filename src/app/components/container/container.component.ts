@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-container',
@@ -7,12 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContainerComponent implements OnInit {
 
-  constructor() { 
+  constructor(protected data:DataService) { 
     
   }
 
   ngOnInit() {
-    
   }
 
 }
