@@ -25,4 +25,8 @@ export class CardDTO {
     maxDef : number=0 ;
     @JsonProperty("minDef", Number)
     minDef : number=0;
+    @JsonProperty("page", Number)
+    page : number = 0;
+    @JsonProperty("size",Number)
+    size : number= 15;
 }

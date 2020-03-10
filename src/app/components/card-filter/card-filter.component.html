@@ -80,7 +80,7 @@
 
   <div class="p-col">
     <div *ngIf="submitted" class="scroll">
-      <cards [cards]="cards"></cards>
+      <cards (page)="search($event)" [cards]="cards" [resultSize]="resultSize"></cards>
     </div>
   </div>
 

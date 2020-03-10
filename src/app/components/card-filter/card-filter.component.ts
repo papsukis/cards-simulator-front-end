@@ -16,6 +16,8 @@ export class CardFilterComponent implements OnInit {
 
   card: CardDTO = new CardDTO();
   cards: CardEntity[];
+
+  resultSize : number = 0;
   types: boolean;
 
   message:string;
@@ -58,8 +60,10 @@ export class CardFilterComponent implements OnInit {
 
     
     this.submitted = true;
-    this.cardService.search(this.card).subscribe((response) => {
-      this.cards = response;
+    this.cardService.search(this.card,0,15).subscribe((response) => {
+      this.cards = response.queryResults;
+      this.resultSize = response.resultSize;
+      console.log(response)
       //console.log(this.cards)   
     },
       (error) => {
@@ -94,6 +98,18 @@ export class CardFilterComponent implements OnInit {
       this.trap = false;
       this.spell = true;
     }
+  }
+
+  search(pageDetails : any){
+    this.cardService.search(this.card,pageDetails.page,pageDetails.size).subscribe((response) => {
+      this.cards = response.queryResults;
+      this.resultSize = response.resultSize;
+      //console.log(this.cards)   
+    },
+      (error) => {
+        console.log('Erreur ! : ' + error);
+      }
+    );
   }
 
 }
