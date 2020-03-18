@@ -3,12 +3,12 @@ import { JsonProperty } from 'json2typescript';
 export class BanlistInfoEntity{
 
     @JsonProperty("banlist_info_id", Number)
-    id;
+    banlist_info_id;
     @JsonProperty("ban_tcg", String)
-    banTCG : string;
+    ban_tcg : string;
     @JsonProperty("ban_ocg", String)
-    banOCG : string;
+    ban_ocg : string;
     @JsonProperty("ban_goat", String)
-    banGoat : string;
+    ban_goat : string;
 
 }

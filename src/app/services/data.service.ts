@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, interval, fromEvent } from 'rxjs';
 import { CardEntity } from '../entities/card';
 import { Store } from '../entities/store';
+import { DecklistEntity } from '../entities/DecklistEntity';
 
 @Injectable()
 export class DataService {
@@ -18,8 +19,14 @@ export class DataService {
   init() {
     this.store = new Store();
   }
-  setState(obj) {
-    this.store = Object.assign({}, this.store, obj);
+  // setState(obj) {
+  //   this.store = Object.assign({}, this.store, obj);
+  //   this.storeSubj.next(this.store);
+  //   console.log(this.store.currentDecklist);
+  // }
+  setCurrentDecklist(decklist : DecklistEntity){
+    this.store.currentDecklist = decklist;
+    this.storeSubj.next(this.store);
   }
 
 }

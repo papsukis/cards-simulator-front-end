@@ -1,0 +1,30 @@
+.decklist-grid{
+    display: grid;
+    grid-template-columns: 90% 10%;
+    grid-template-rows: 340px 150px 150px;
+    // grid-area: 
+    // "main-deck details"
+    // "side-deck details"
+    // "extra-deck details";
+}
+
+.main-deck{
+    grid-column: 1/2;
+    grid-row : 1/2;
+}
+.side-deck{
+    grid-column: 1/2;
+    grid-row : 2/3;}
+.extra-deck{
+    grid-column: 1/2;
+    grid-row : 3/4;
+}
+.details{
+    grid-column: 2/3;
+    grid-row : 1/4;
+}
+.deck-grid{
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(6,1fr);
+}

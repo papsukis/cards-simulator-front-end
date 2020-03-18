@@ -25,6 +25,12 @@ import { DecklistComponent } from './components/decklist/decklist.component';
 import { ContainerComponent } from './components/container/container.component';
 import { DataService } from './services/data.service';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { InputComponent } from './shared/input/input.component';
+import { SelectComponent } from './shared/select/select.component';
+import {InputTextModule} from 'primeng/inputtext';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CardDetailsComponent } from './components/card-details/card-details.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 
@@ -36,7 +42,10 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     CardFilterComponent,
     SearchPipe,
     DecklistComponent,
-    ContainerComponent
+    ContainerComponent,
+    InputComponent,
+    SelectComponent,
+    CardDetailsComponent
   ],
   imports: [
     FormsModule,
@@ -44,6 +53,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     AppRoutingModule,
     NgxPaginationModule,
     HttpClientModule,
+    InputTextModule,
     MatSliderModule,
     BrowserAnimationsModule,
     MatDividerModule,
@@ -54,9 +64,14 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule,
+    MatBadgeModule
   ],
   providers: [DataService],
+  entryComponents : [
+    CardDetailsComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

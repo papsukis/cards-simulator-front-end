@@ -1,6 +1,7 @@
 <div >
-     <img [src]="card.card_images[0].image_url_small" class="img">   
+        <img [src]="card.card_images[0].image_url_small" class="img" (click)="showDetails()">   
 </div>
+
         <!-- <button (click)="addToMainDeck(card)">ADD to mainDeck</button>
         <button (click)="addToExtraDeck(card)">ADD to ExtraDeck</button>
         <button (click)="addToSideDeck(card)">ADD to SideDeck</button> -->

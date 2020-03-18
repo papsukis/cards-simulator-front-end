@@ -1,4 +1,26 @@
-<div class="p-grid p-dir-col" style="margin-left: 5px;">
+<div>
+  <!-- -->
+  <div  class="deck_filter_grid">
+
+    <!-- <h3>Float Label</h3>
+    <span class="ui-float-label">
+        <input id="float-input" type="text" size="30" pInputText> 
+        <label for="float-input">Username</label>
+    </span> -->
+    <!-- <div>
+      <my-input [(ngModel)]="card.name" [labelToShow]="'Name'" ngDefaultControl></my-input>
+    </div>
+    <div>
+      <my-input [(ngModel)]="card.archetype" [labelToShow]="'Archetype'" ngDefaultControl></my-input>
+    </div>
+    <div>
+      <my-input [(ngModel)]="card.race" [labelToShow]="'Race'" ngDefaultControl></my-input>
+    </div> -->
+
+
+  </div>
+
+
   <div class="p-col-fixed" style="height : 75%">
     <form #heroForm="ngForm" (ngSubmit)="onSubmit()">
       <mat-form-field style="margin-right: 10px;">
@@ -78,8 +100,8 @@
     </form>
   </div>
 
-  <div class="p-col">
-    <div *ngIf="submitted" class="scroll">
+  <div>
+    <div *ngIf="submitted">
       <cards (page)="search($event)" [cards]="cards" [resultSize]="resultSize"></cards>
     </div>
   </div>

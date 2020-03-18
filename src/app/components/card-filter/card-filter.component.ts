@@ -63,8 +63,6 @@ export class CardFilterComponent implements OnInit {
     this.cardService.search(this.card,0,15).subscribe((response) => {
       this.cards = response.queryResults;
       this.resultSize = response.resultSize;
-      console.log(response)
-      //console.log(this.cards)   
     },
       (error) => {
         console.log('Erreur ! : ' + error);

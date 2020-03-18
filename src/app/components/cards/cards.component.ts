@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChildren, ViewChild
 import { CardsService } from '../../services/cards.service';
 import { CardEntity } from '../../entities/card';
 import { DataService } from 'src/app/services/data.service';
-import { MatPaginator } from '@angular/material';
 
 
 @Component({
@@ -16,7 +15,6 @@ export class CardsComponent implements OnInit {
   //cards : CardEntity[];
   @Input() cards : CardEntity[];
   @Input() resultSize : number;
-  currentPageCards : CardEntity[];
   trackIds = [];
   @Output() page : EventEmitter<any> = new EventEmitter();
   //@Output() size : EventEmitter<Number> = new EventEmitter();
@@ -26,9 +24,7 @@ export class CardsComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.cards=this.searchResult;
-    // console.log(this.cards)
-    
+   
     this.data.storeSubj.subscribe(store=>{
       this.trackIds=store.trackIds
     })
@@ -39,8 +35,34 @@ export class CardsComponent implements OnInit {
                     "size": event.pageSize});
   }
 
-  read(event){
-    this.currentPageCards=this.cards.slice(event.pageSize*event.pageIndex,(event.pageSize*event.pageIndex)+event.pageSize)
+
+  validateCard(card :CardEntity) : boolean{
+    if( this.data.store.currentDecklist.countCard(card) >= 3)
+    return true;
+    if(card.banlist_info== null )
+    return false;
+    if(card.banlist_info.ban_tcg === "Banned")
+    return true;
+    if(card.banlist_info.ban_tcg === "Limited" && 
+    (this.data.store.currentDecklist.countCard(card) >= 1))
+    return true;
+    if(card.banlist_info.ban_tcg === "Semi-Limited" &&
+    this.data.store.currentDecklist.countCard(card) >= 2)
+    return true;
+
+
+    return false;
+  }
+
+  getBanlistInfo(card : CardEntity){
+    if(card.banlist_info==null)
+    return null
+    if(card.banlist_info.ban_tcg === "Banned")
+    return 0;
+    if(card.banlist_info.ban_tcg === "Limited")
+    return 1;
+    if(card.banlist_info.ban_tcg === "Semi-Limited" )
+    return 2;
   }
 
 }

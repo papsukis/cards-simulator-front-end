@@ -39,7 +39,6 @@ export class CardsService {
                     .set("page",(page).toString())
                     .set("size",(size).toString())
 
-console.log(params)
     return this.http
     .get<CardSearchDTO>(this.baseUrl+'search',{params : params})
     

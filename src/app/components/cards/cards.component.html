@@ -1,23 +1,29 @@
-<div class="row">
-    <div class="col 3 p-grid" 
-    id="cardsDiv" cdkDropList [cdkDropListData]="cards"
-    [cdkDropListConnectedTo]="trackIds">
-    <!-- (cdkDropListDropped)="onTalkDrop($event, 'from') 
-    | paginate: { itemsPerPage: 15, currentPage: p }-->
-            <div *ngFor="let card of cards " class="p-col" cdkDrag>
-                    <card [card]="card" >
-                    </card>    
-                </div>
-    </div>
+<div class="container">
+
+            <div class="card_container"
+            id="cardsDiv" 
+            cdkDropList 
+            [cdkDropListData]="cards"
+            [cdkDropListConnectedTo]="trackIds">
+            <!-- [cdkDropListEnterPredicate]="" -->
+            <!-- (cdkDropListDropped)="onTalkDrop($event, 'from') 
+            | paginate: { itemsPerPage: 15, currentPage: p }-->
+                    <div *ngFor="let card of cards "  cdkDrag [cdkDragDisabled]="validateCard(card)">
+                            <card [card]="card" class="card_grid" [matBadge]="getBanlistInfo(card)" matBadgePosition="above" matBadgeColor="warn">
+                            </card>    
+                    </div>
+            </div>
+
+        <div >
+            <mat-paginator [length]="resultSize"
+            [pageSize]="15"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            (page)="search($event)"
+            [pageIndex] ="p">
+        </mat-paginator>
+        </div>
 
 </div>
-<button (click)="test()">
-    aaaaa
-</button>
-    <mat-paginator [length]="resultSize"
-    [pageSize]="15"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    (page)="search($event)"
-    [pageIndex] ="p">
-    <mat-paginator>
+
+
     <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->

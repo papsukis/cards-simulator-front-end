@@ -3,7 +3,7 @@ import { CardImagesEntity } from './CardImagesEntity';
 import { CardPricesEntity } from './CardPricesEntity';
 import {JsonObject, JsonProperty} from "json2typescript";
 import { BanlistInfoEntity } from './BanlistInfoEntity';
- 
+import { Constants } from '../consts/const'
 @JsonObject("card")
 export class CardEntity{
     @JsonProperty("id", Number)
@@ -34,8 +34,17 @@ export class CardEntity{
     card_prices : CardPricesEntity = new CardPricesEntity;
     @JsonProperty("banlist_info", [BanlistInfoEntity])
     banlist_info : BanlistInfoEntity=new BanlistInfoEntity();
-
+ 
     constructor(){
+
+    }
+
+    isExtraDeckCard() : boolean{
+        for(let t of Constants.ExtraDeckType){
+            if(this.type.includes(t.name))
+            return true;
+        }
+       return false;
 
     }
 }
